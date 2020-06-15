@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "JUgGjw8Sk/LX1XadllQTQH4toMK4nsFGj6VPQcLn4gjJsgSAJMiYnoT36iGiH8NrboBSUb/4SfJxcCB0Zu8yXg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Domi\\Documents\\GitHub\\Jatek\\Szabaduloszoba\\Szabaduloszoba\\Szabaduloszoba\\Szabaduloszoba.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Domi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

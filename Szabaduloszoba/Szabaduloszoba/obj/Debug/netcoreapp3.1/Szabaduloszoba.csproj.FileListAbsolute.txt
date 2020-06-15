@@ -1,0 +1,13 @@
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\bin\Debug\netcoreapp3.1\Szabaduloszoba.exe
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\bin\Debug\netcoreapp3.1\Szabaduloszoba.deps.json
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\bin\Debug\netcoreapp3.1\Szabaduloszoba.runtimeconfig.json
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\bin\Debug\netcoreapp3.1\Szabaduloszoba.runtimeconfig.dev.json
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\bin\Debug\netcoreapp3.1\Szabaduloszoba.dll
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\bin\Debug\netcoreapp3.1\Szabaduloszoba.pdb
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.csprojAssemblyReference.cache
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.AssemblyInfoInputs.cache
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.AssemblyInfo.cs
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.csproj.CoreCompileInputs.cache
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.dll
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.pdb
+C:\Users\Domi\Documents\GitHub\Jatek\Szabaduloszoba\Szabaduloszoba\Szabaduloszoba\obj\Debug\netcoreapp3.1\Szabaduloszoba.genruntimeconfig.cache
