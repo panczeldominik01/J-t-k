@@ -16,7 +16,9 @@ namespace Szabaduloszoba
         static int feszitovas = 0;
         static int doboznyitas = 0;
         static int kijutas = 0;
+        static int ablaktores = 0;
         static int szekrenymozgas = 0;
+        static int ajtonyitas = 0;
         static string helyzet = "nappali";
         #region Simanezes
         static void nez()
@@ -41,7 +43,7 @@ namespace Szabaduloszoba
             {
                 Console.WriteLine("A szekrényen nem látszik semmi, csak az, hogy kinyitható.");
             }
-            if (mit ==2&& helyzet == "furdo")
+            if (mit ==2 && helyzet == "furdo")
             {
                 Console.WriteLine("A kádban egy feszítővasat látsz.");
             }
@@ -52,16 +54,25 @@ namespace Szabaduloszoba
         }
         #endregion
         #region veddfel
-        static void veddfel(int h = 0)
+        static void veddfel(int h)
         {
             if (h==1 && doboznyitas==1)
             {
                 Console.WriteLine("Felvetted a kulcsot. Mostnatól a leltáradban megtalálható, amíg le nem teszed.");
                 kulcs = 1;
             }
+            if (h == 1 && doboznyitas == 0)
+            {
+                Console.WriteLine("Nem találtad még meg a kulcs helyét.");
+            }
             if (h!=1 || doboznyitas!=1)
             {
                 Console.WriteLine("Nem tudod felvenni a tárgyat amit beírtál.");
+            }
+            if (h == 2)
+            {
+                Console.WriteLine("Felvetted a feszítővasat. Mostantól a leltáradban szerepel, amíg le nem teszed.");
+                feszitovas = 1;
             }
 
         }
@@ -76,6 +87,7 @@ namespace Szabaduloszoba
             if (t == 2 && kulcs == 1)
             {
                 Console.WriteLine("Kinyitottad az ajtót, át tudsz menni a fürdőszobába.");
+                ajtonyitas = 1;
             }
             if (t == 2 && kulcs !=1)
             {
@@ -94,6 +106,54 @@ namespace Szabaduloszoba
 
         }
         #endregion
+        #region Mentes
+        static void mentes(string hely, int kulcs, int feszitovas, int doboznyitas, int szekrenymozgas, int ablaktores)
+        {
+            StreamWriter writer = new StreamWriter("mentes.txt");
+            for (int i = 0; i < 5; i++)
+            {
+                if (i==0)
+                {
+                    writer.WriteLine(hely);
+                }
+                if (i==1)
+                {
+                    writer.WriteLine(kulcs);
+                }
+                if (i == 2)
+                {
+                    writer.WriteLine(feszitovas);
+                }
+                if (i == 3)
+                {
+                    writer.WriteLine(doboznyitas);
+                }
+                if (i == 4)
+                {
+                    writer.WriteLine(szekrenymozgas);
+                }
+                if (i == 1)
+                {
+                    writer.WriteLine(ablaktores);
+                }
+
+            }
+            
+            writer.Close();
+        }
+        #endregion
+        static void tores(int j)
+        {
+            if (j == 1 && helyzet == "nappali" && feszitovas == 1 && szekrenymozgas == 1)
+            {
+                Console.WriteLine("Kitörted az ablakot a feszítővassal.");
+                ablaktores = 1;
+            }
+            if (j!=1)
+            {
+                Console.WriteLine("Ezt nem tudod eltörni");
+            }
+        }
         static void Main(string[] args)
         {
             
@@ -127,6 +187,7 @@ namespace Szabaduloszoba
                         Console.Clear();
                     }                   
                 }
+                #region nyisd eleje
                 if (elso =="nyisd")
                 {
                     if (masodik =="szekrény")
@@ -144,24 +205,34 @@ namespace Szabaduloszoba
                     }
                     
                 }
+                #endregion
+                if (elso == "mentes" || elso =="mentés")
+                {
+                    mentes(helyzet, kulcs, feszitovas, doboznyitas, szekrenymozgas, ablaktores);
+                }
                 if (elso=="vedd fel")
                 {
-                    if (masodik =="kulcs")
+                    if (masodik =="kulcs" && doboznyitas == 1)
                     {
                         veddfel(1);
                     }
+                    if (masodik =="feszítővas" && helyzet =="furdo")
+                    {
+                        veddfel(2);
+                    }
                 }
+                #region nezdeleje
                 if (elso =="nézd" || elso =="néz")
                 {
-                    if (masodik == "szekrény")
+                    if (masodik == "szekrény" && helyzet == "nappali")
                     {
                         dolgoknezese(1);
                     }
-                    if (masodik =="kád")
+                    if (masodik =="kád" && helyzet =="furdo")
                     {
                         dolgoknezese(2);
                     }
-                    if (masodik =="ablak")
+                    if (masodik =="ablak" && szekrenymozgas==1 && helyzet =="nappali")
                     {
                         dolgoknezese(3);
                     }
@@ -171,6 +242,28 @@ namespace Szabaduloszoba
 
                     }
                 }
+                #endregion
+
+                #region menni
+                if (elso == "menj" || elso == "menni" )
+                {
+                    if (masodik == "nyugat" && helyzet =="nappali" && ajtonyitas == 1)
+                    {
+                        Console.WriteLine("Áthaladtál a fürdőbe.");
+                        helyzet = "furdo"; 
+                    }
+                    if (masodik == "nyugat" && helyzet == "nappali" && ajtonyitas != 1)
+                    {
+                        Console.WriteLine("A fürdőbe jutáshoz ki kell nyitnod az ajtót egy kulccsal.");
+                    }
+                    if (masodik =="kelet" && helyzet =="furdo")
+                    {
+                        Console.WriteLine("Áthaladtál a nappaliba");
+                        helyzet = "nappali";
+                    }
+                }
+                #endregion
+                #region leltar
                 if (elso=="leltár")
                 {
                     Console.Write("A leltáradban ");
@@ -188,6 +281,7 @@ namespace Szabaduloszoba
                     }
                     Console.Write(" található");
                 }
+                #endregion
                 elso = " "; masodik = " "; harmadik = " ";
                 i = 0;
                 Console.ReadLine();
