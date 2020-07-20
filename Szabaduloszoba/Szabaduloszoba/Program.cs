@@ -64,15 +64,15 @@ namespace Szabaduloszoba
             if (h == 1 && doboznyitas == 0)
             {
                 Console.WriteLine("Nem találtad még meg a kulcs helyét.");
-            }
-            if (h!=1 || doboznyitas!=1)
-            {
-                Console.WriteLine("Nem tudod felvenni a tárgyat amit beírtál.");
-            }
-            if (h == 2)
+            }           
+            if (h == 2 && helyzet =="furdo")
             {
                 Console.WriteLine("Felvetted a feszítővasat. Mostantól a leltáradban szerepel, amíg le nem teszed.");
                 feszitovas = 1;
+            }
+            else
+            {
+                Console.WriteLine("Nem tudod felvenni a tárgyat amit beírtál.");
             }
 
         }
@@ -197,7 +197,14 @@ namespace Szabaduloszoba
                     }
                     if (masodik == "ajtó")
                     {
-                        nyisd(2);
+                        if (harmadik == "kulcs")
+                        {
+                           nyisd(2);
+                        }
+                        if (harmadik !="kulcs")
+                        {
+                            Console.WriteLine("Kulccsal kell kinyitni az ajtót!");
+                        }
                     }
                     if (masodik == "doboz")
                     {
@@ -206,6 +213,14 @@ namespace Szabaduloszoba
                     
                 }
                 #endregion
+                if (elso== "húzd" || elso=="huzd")
+                {
+                    if (masodik == "szekrény")
+                    {
+                        szekrenymozgas = 1;
+                        Console.WriteLine("Elhúztad a szekrényt.");
+                    }
+                }
                 if (elso == "mentes" || elso =="mentés")
                 {
                     mentes(helyzet, kulcs, feszitovas, doboznyitas, szekrenymozgas, ablaktores);
@@ -244,6 +259,21 @@ namespace Szabaduloszoba
                 }
                 #endregion
 
+                if (elso == "tör" || elso == "törd")
+                {
+                    if (masodik == "ablak" && helyzet=="nappali" && szekrenymozgas ==1)
+                    {
+                        if (harmadik =="feszítővas" || harmadik == "feszitovas" || harmadik =="feszitővas")
+                        {
+                            ablaktores = 1;
+                            Console.WriteLine("Betörted az ablakot. Északra ki tudsz menekülni.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ezt a dolgot nem tudod eltörni");
+                    }
+                }
                 #region menni
                 if (elso == "menj" || elso == "menni" )
                 {
@@ -260,6 +290,10 @@ namespace Szabaduloszoba
                     {
                         Console.WriteLine("Áthaladtál a nappaliba");
                         helyzet = "nappali";
+                    }
+                    if (masodik == "észak" && helyzet =="nappali" && ablaktores == 1)
+                    {
+                        break;
                     }
                 }
                 #endregion
