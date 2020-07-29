@@ -61,11 +61,11 @@ namespace Szabaduloszoba
                 Console.WriteLine("Felvetted a kulcsot. Mostnatól a leltáradban megtalálható, amíg le nem teszed.");
                 kulcs = 1;
             }
-            if (h == 1 && doboznyitas == 0)
+            else if (h == 1 && doboznyitas == 0)
             {
                 Console.WriteLine("Nem találtad még meg a kulcs helyét.");
             }           
-            if (h == 2 && helyzet =="furdo")
+            else if (h == 2 && helyzet =="furdo")
             {
                 Console.WriteLine("Felvetted a feszítővasat. Mostantól a leltáradban szerepel, amíg le nem teszed.");
                 feszitovas = 1;
@@ -106,11 +106,42 @@ namespace Szabaduloszoba
 
         }
         #endregion
+        static void betoltes()
+        {
+            StreamReader reader = new StreamReader("mentes.txt");
+            for (int i = 0; i < 6; i++)
+            {
+                if (i == 0)
+                {
+                    helyzet = reader.ReadLine();
+                }
+                if (i == 1)
+                {
+                    kulcs = Convert.ToInt32(reader.ReadLine());
+                }
+                if (i == 2)
+                {
+                    feszitovas = Convert.ToInt32(reader.ReadLine());
+                }
+                if (i == 3)
+                {
+                    doboznyitas = Convert.ToInt32(reader.ReadLine());
+                }
+                if (i == 4)
+                {
+                    szekrenymozgas = Convert.ToInt32(reader.ReadLine());
+                }
+                if (i == 5)
+                {
+                    ablaktores = Convert.ToInt32(reader.ReadLine());
+                }
+            }
+        }
         #region Mentes
         static void mentes(string hely, int kulcs, int feszitovas, int doboznyitas, int szekrenymozgas, int ablaktores)
         {
             StreamWriter writer = new StreamWriter("mentes.txt");
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (i==0)
                 {
@@ -132,7 +163,7 @@ namespace Szabaduloszoba
                 {
                     writer.WriteLine(szekrenymozgas);
                 }
-                if (i == 1)
+                if (i == 5)
                 {
                     writer.WriteLine(ablaktores);
                 }
@@ -156,7 +187,8 @@ namespace Szabaduloszoba
         }
         static void Main(string[] args)
         {
-            
+            Console.Title = "Szabadulószoba";
+            Console.WriteLine("A játékban az egy szavas parancsokat szavanként kell megadni, minden szó után Enter-t kell ütni.\nA két szavas kifejezéseket nem kell külön Enter leütéssel megadni.");
             while (kijutas != 1)
             {
                 int i = 0;
@@ -168,7 +200,7 @@ namespace Szabaduloszoba
                     }
                     if (i ==0)
                     {
-                        Console.WriteLine("Adja meg mit szeretne tenni.\nAbban az esetben ha nem 3 szavas kifehezést ad meg kérem az üres helyen írja be a következőt = '*'");
+                        Console.WriteLine("Adja meg mit szeretne tenni.\nAbban az esetben ha nem 3 szavas kifejezést ad meg kérem az üres helyen írja be a következőt = '*'");
                         elso = Convert.ToString(Console.ReadLine());
                         Console.Clear();
                     }
@@ -186,6 +218,10 @@ namespace Szabaduloszoba
                          harmadik = Convert.ToString(Console.ReadLine());
                         Console.Clear();
                     }                   
+                }
+                if (elso == "betölt" || elso == "tölt")
+                {
+                    betoltes();
                 }
                 #region nyisd eleje
                 if (elso =="nyisd")
@@ -234,6 +270,10 @@ namespace Szabaduloszoba
                     if (masodik =="feszítővas" && helyzet =="furdo")
                     {
                         veddfel(2);
+                    }
+                    else if(masodik !="kulcs" || masodik!="feszitovas" )
+                    {
+                        Console.WriteLine("Ezt a tárgyat nem tudod felvenni");
                     }
                 }
                 #region nezdeleje
