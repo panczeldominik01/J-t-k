@@ -36,7 +36,7 @@ namespace Szabaduloszoba
             }
             if (helyzet == "furdo")
             {
-                Console.WriteLine("A fürdőbeen tartózkodsz. Itt található egy kád. Keletre a nappali.");
+                Console.WriteLine("A fürdőben tartózkodsz. Itt található egy kád. Keletre a nappali.");
             }
             
 
