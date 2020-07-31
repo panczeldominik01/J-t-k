@@ -275,7 +275,7 @@ namespace Szabaduloszoba
                     {
                         veddfel(2);
                     }
-                    if(masodik !="kulcs" && masodik!="feszitővas" && masodik!="feszitovas" )
+                    if(masodik !="kulcs" && masodik!="feszitővas" && masodik!="feszitovas" && masodik!="feszítővas" )
                     {
                         Console.WriteLine("Ezt a tárgyat nem tudod felvenni");
                     }
